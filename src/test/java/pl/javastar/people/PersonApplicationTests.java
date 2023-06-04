@@ -1,10 +1,10 @@
-package pl.javastar.employee;
+package pl.javastar.people;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeApplicationTests {
+class PersonApplicationTests {
 
     @Test
     void contextLoads() {
