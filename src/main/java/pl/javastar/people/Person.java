@@ -16,7 +16,27 @@ public class Person {
 
     private LocalDate birthdate;
 
+    private String emailAddress;
+
+    private boolean signedToNewsletter;
+
     public Person() {
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public boolean isSignedToNewsletter() {
+        return signedToNewsletter;
+    }
+
+    public void setSignedToNewsletter(boolean signedToNewsletter) {
+        this.signedToNewsletter = signedToNewsletter;
     }
 
     public LocalDate getBirthdate() {
