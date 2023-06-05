@@ -16,6 +16,8 @@
                 <th>Imię</th>
                 <th>Nazwisko</th>
                 <th>Data Urodzenia</th>
+                <th>Adres email</th>
+                <th>Zapisano do newsletter'a</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +25,9 @@
             <td th:text="${employee.firstName}"></td>
             <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.birthdate}"></td>
+            <td th:text="${employee.emailAddress}"></td>
+            <td th:if="${employee.signedToNewsletter == true}" th:text="TAK"></td>
+            <td th:unless="${employee.signedToNewsletter == true}" th:text="NIE"></td>
         </tr>
         </tbody>
     </table>
@@ -41,6 +46,14 @@
             <div class="mt-2">
                 <label for="birthDate" class="form-label">Data urodzenia</label>
                 <input type="date" class="form-control" id="birthdate" th:field="*{birthdate}">
+            </div>
+            <div class="mt-2">
+                <label for="emailAddress" class="form-label">Adres email</label>
+                <input type="text" class="form-control" id="emailAddress" th:field="*{emailAddress}">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="signedToNewsletter" value="true">
+                <label class="form-check-label" for="signedToNewsletter">Chcę otrzymywać najnowsze informacje</label>
             </div>
             <div class="col-auto mt-2">
                 <button type="submit" class="btn btn-primary mb-3">Dodaj</button>
