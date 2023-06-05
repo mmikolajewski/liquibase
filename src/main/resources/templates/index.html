@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista osób</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <h2 class="mt-4">Pracownicy</h2>
+    <table class="table  mt-4">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Data Urodzenia</th>
+                <th>Adres email</th>
+                <th>Zapisano do newsletter'a</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.birthdate}"></td>
+            <td th:text="${employee.emailAddress}"></td>
+            <td th:if="${employee.signedToNewsletter == true}" th:text="TAK"></td>
+            <td th:unless="${employee.signedToNewsletter == true}" th:text="NIE"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 class="mt-4">Dodaj pracownika</h2>
+    <div class="left-align">
+        <form action="/add" method="post" class="mt-4" th:object="${employeeToCreate}">
+            <div class="mt-2">
+                <label for="firstName" class="form-label">Imię</label>
+                <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+            </div>
+            <div class="mt-2">
+                <label for="lastName" class="form-label">Nazwisko</label>
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+            </div>
+            <div class="mt-2">
+                <label for="birthDate" class="form-label">Data urodzenia</label>
+                <input type="date" class="form-control" id="birthdate" th:field="*{birthdate}">
+            </div>
+            <div class="mt-2">
+                <label for="emailAddress" class="form-label">Adres email</label>
+                <input type="text" class="form-control" id="emailAddress" th:field="*{emailAddress}">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="signedToNewsletter" value="true">
+                <label class="form-check-label" for="signedToNewsletter">Chcę otrzymywać najnowsze informacje</label>
+            </div>
+            <div class="col-auto mt-2">
+                <button type="submit" class="btn btn-primary mb-3">Dodaj</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>
